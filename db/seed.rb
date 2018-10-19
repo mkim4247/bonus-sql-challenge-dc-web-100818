@@ -3,14 +3,15 @@
 require "sqlite3"
 require 'csv'
 
+db = SQLite3::Database.new "../daily_show_guests.csv"
 
-db = SQLite3::Database.new ":memory:"
-
-# Create a database
 rows = db.execute <<-SQL
-  create table users (
-    name varchar(30),
-    age int
+  CREATE TABLE daily_show_guests (
+    id INTEGER PRIMARY KEY
+    name TEXT,
+    date TEXT,
+    occupation TEXT,
+    data_category TEXT
   );
 SQL
 
